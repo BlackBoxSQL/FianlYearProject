@@ -80,6 +80,35 @@ class CreateTutorProfile(forms.ModelForm):
 
 
 class CreateGuardianProfile(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nid_No'].widget.attrs.update({'placeholder': 'Example: 19956712231000890'})
+        self.fields['occupation'].widget.attrs.update({'placeholder': 'Example: Doctor, Businessman, Engineer'})
+        self.fields['s_class'].widget.attrs.update({'placeholder': 'Example: 9'})
+        self.fields['school'].widget.attrs.update({'placeholder': 'Example: I.E.T. Govt. High School'})
+        self.fields['subject'].widget.attrs.update({'placeholder': 'Example: Biology, Economics, Physics'})
+        self.fields['payment'].widget.attrs.update({'placeholder': 'Example: 1200'})
+        self.fields['tution_hour'].widget.attrs.update({'placeholder': 'Example: 2'})
+        self.fields['guardian_contact'].widget.attrs.update({'placeholder': 'Example: +880XXXXXXXXXX'})
+
     class Meta:
         model = models.GuardianProfiles
-        fields = ['name', 'age', 'g_or_t', 'image']
+        fields = [
+            'Guardians_name',
+            'gender',
+            'nid_No',
+            'occupation',
+            'students_name',
+            's_class',
+            'school',
+            'subject',
+            'payment',
+            'tution_hour',
+            'guardian_contact',
+            'need_tutor_from',
+        ]
+        widgets = {
+            'need_tutor_from': DateInput(),
+
+        }
