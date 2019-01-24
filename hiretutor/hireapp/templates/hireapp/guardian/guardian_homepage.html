@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+<h1>Guardian homepage</h1>
+{% for TutorProfiles in tutors %}
+
+<p>{{TutorProfiles.name|safe}}
+{{TutorProfiles.age|safe}}
+{{TutorProfiles.nid|safe}}
+    <b>{{TutorProfiles.phone_number|safe}}</b>
+    {{TutorProfiles.subject_you_teach|safe}}
+</p>
+{% if TutorProfiles.image %}
+<img src="{{TutorProfiles.image.url}}" alt="nothing to show" width="200px">
+{% endif %}
+<!-- tempalate tag here -->
+{% endfor %}
+
+{% endblock content %}
