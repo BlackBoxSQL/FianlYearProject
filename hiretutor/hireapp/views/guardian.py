@@ -7,7 +7,7 @@ from ..decorators import guardian_required
 from ..models import User, GuardianProfiles, TutorProfiles
 from django.views.generic import CreateView, TemplateView, ListView
 
-from ..forms import GuardianSignUpForm
+from ..forms import GuardianSignUpForm, CreateGuardianProfile
 
 
 class GuardianSignUpView(CreateView):
@@ -37,7 +37,7 @@ class GuardianHomepage(ListView):
 @method_decorator([login_required, guardian_required], name='dispatch')
 class GuardianProfile(CreateView):
     model = GuardianProfiles
-    fields = ['name', 'age', 'g_or_t', 'image']
+    form_class = CreateGuardianProfile
 
     def form_valid(self, form):
         instance = form.save(commit=False)
