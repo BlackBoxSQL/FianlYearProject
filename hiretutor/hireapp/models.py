@@ -15,8 +15,6 @@ class TutorProfiles(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     Your_Full_Name = models.CharField(max_length=50)
-    Fathers_Name = models.CharField("Father's Name", max_length=50)
-    Mothers_Name = models.CharField("Mother's Name", max_length=50)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     age = models.CharField(max_length=3)
     Date_of_Birth = models.DateField()

@@ -55,8 +55,6 @@ class CreateTutorProfile(forms.ModelForm):
         model = models.TutorProfiles
         fields = [
             'Your_Full_Name',
-            'Fathers_Name',
-            'Mothers_Name',
             'gender',
             'age',
             'Date_of_Birth',
