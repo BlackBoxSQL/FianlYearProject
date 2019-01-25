@@ -7,11 +7,9 @@
 {% for GuardianProfiles in guardians %}
 
 
-<p>{{GuardianProfiles.name|safe}}
-{{GuardianProfiles.age|safe}}</p>
-{% if GuardianProfiles.image %}
-<img src="{{GuardianProfiles.image.url}}" alt="nothing to show" width="200px">
-{% endif %}
+<p>{{GuardianProfiles.gender|safe}}
+{{GuardianProfiles.occupation|safe}}</p>
+{{GuardianProfiles.school|safe}}
 <!-- tempalate tag here -->
 {% endfor %}
 

@@ -47,7 +47,7 @@ class CreateTutorProfile(forms.ModelForm):
             'placeholder': 'Example:\nBarishal, Bhola, Lalmohan, Badarpur \n\nor\n\nDhanmondi. 32\nDhaka-1209\nBangladesh'})
         self.fields['nid_No'].widget.attrs.update({'placeholder': 'Example: 19956712231000890'})
         self.fields['description'].widget.attrs.update(
-            {'placeholder': 'Why do you need this tution & What you have to offer to the client (guardian)?'})
+            {'placeholder': 'Why do you need this tuition & What you have to offer to the client (guardian)?'})
         self.fields['tution_hour'].widget.attrs.update(
             {'placeholder': 'Example: 1.5 hours'})
 
