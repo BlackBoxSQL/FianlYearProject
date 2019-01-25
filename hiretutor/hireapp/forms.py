@@ -108,8 +108,8 @@ class CreateGuardianProfile(forms.ModelForm):
             'guardian_contact',
             'need_tutor_from',
             'description',
+            'address',
         ]
         widgets = {
             'need_tutor_from': DateInput(),
-
         }
