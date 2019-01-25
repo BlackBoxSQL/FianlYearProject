@@ -33,7 +33,7 @@ class TutorProfiles(models.Model):
     description = models.TextField(max_length=250)
 
     def __str__(self):
-        return self.Your_Full_Name
+        return 'User Name: {}, Tutor Name: {}'.format(self.user, self.Your_Full_Name)
 
 
 class GuardianProfiles(models.Model):
@@ -54,5 +54,6 @@ class GuardianProfiles(models.Model):
     tution_hour = models.CharField("Tution hours", max_length=2)
     guardian_contact = models.CharField("Guardian's Contact Number", max_length=14)
     need_tutor_from = models.DateField()
+
     def __str__(self):
-        return self.Full_name
+        return 'User Name: {}, Guardian Name: {}'.format(self.user, self.Guardians_name)
