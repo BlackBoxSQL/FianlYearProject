@@ -3,12 +3,24 @@
 {% block title %}
 {% endblock title %}
 {% block content %}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8"></div>
+</div>
+
+
+
+
+
+
+
 <h1>Guardian homepage</h1>
 {% for TutorProfiles in tutors %}
 
 <p>{{TutorProfiles.name|safe}}
-{{TutorProfiles.age|safe}}
-{{TutorProfiles.nid|safe}}
+    {{TutorProfiles.age|safe}}
+    {{TutorProfiles.nid|safe}}
     <b>{{TutorProfiles.phone_number|safe}}</b>
     {{TutorProfiles.subject_you_teach|safe}}
 </p>

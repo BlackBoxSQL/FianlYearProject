@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block content %}
 <div class="pb-2 mt-4 mb-2 border-bottom">
-    <h3 class="display-3">Guardians Profile Page </h3>
+    <h3 class="display-3">Guardian's Profile Page </h3>
     <h5>
         <small>Your username is
             <mark>{{user.username}}</mark>
@@ -13,7 +13,7 @@
     </h5>
 </div>
 <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-    <h3>Personal Information</h3>
+    <h3>Guardian's Personal Information</h3>
     <div class="row">
         <div class="col-sm-4">
             {{form.Guardians_name|as_crispy_field}}
@@ -46,6 +46,7 @@
             {{form.tution_hour|as_crispy_field}}
             {{form.guardian_contact|as_crispy_field}}
             {{form.need_tutor_from|as_crispy_field}}
+            {{form.description|as_crispy_field}}
         </div>
     </div>
     <button type="submit" class="btn btn-success">Save</button>

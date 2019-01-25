@@ -91,6 +91,8 @@ class CreateGuardianProfile(forms.ModelForm):
         self.fields['payment'].widget.attrs.update({'placeholder': 'Example: 1200'})
         self.fields['tution_hour'].widget.attrs.update({'placeholder': 'Example: 2'})
         self.fields['guardian_contact'].widget.attrs.update({'placeholder': 'Example: +880XXXXXXXXXX'})
+        self.fields['description'].widget.attrs.update(
+            {'placeholder': "Tell us about student's weakness in subjects, how to treat the student?"})
 
     class Meta:
         model = models.GuardianProfiles
@@ -107,6 +109,7 @@ class CreateGuardianProfile(forms.ModelForm):
             'tution_hour',
             'guardian_contact',
             'need_tutor_from',
+            'description',
         ]
         widgets = {
             'need_tutor_from': DateInput(),
