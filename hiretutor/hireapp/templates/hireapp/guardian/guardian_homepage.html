@@ -6,44 +6,36 @@
 <h1>Guardian homepage</h1>
 <div class="row">
     <div class="col-sm-4"><p>this in col-sm-4</p></div>
-    <div class="col-sm-8">
+    <div class="col-sm-8">{% for TutorProfiles in tutors %}
         <div class="card card-inverse" style="background-color: #F8F9FA; border-color: #E0A800;">
             <div class="card-block">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="https://i.pinimg.com/236x/7a/cb/cc/7acbcc534ecef1fde2e77e601f424896--young-johnny-depp-its-johnny.jpg"
-                             alt="..." class="img-thumbnail rounded float-left">
+                        {% if TutorProfiles.image %}
+                        <img src="{{TutorProfiles.image.url}}"
+                             alt="nothing to show" class="img-thumbnail rounded float-left">
+                        {% endif %}
                     </div>
                     <div class="col-sm-8"><br>
-                        <h5 class="card-title text-muted"><i class="fas fa-chalkboard-teacher"></i> Murad Takla</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Las vegas, USA
+                        <h5 class="card-title text-muted"><i class="fas fa-chalkboard-teacher"></i>
+                            {{TutorProfiles.Your_Full_Name|safe}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{TutorProfiles.address|safe}}
                             <ion-icon name="pin"></ion-icon>
-                            <br>23 years old, male <br> Nid No. XXXXXXXXXXXXXXXXXXXXXX <br>Contact:XXXXXXXXXXX<br><br> <i class="fas fa-book"></i> Subjects: <b>Accounting,
-                                Biology, Economics</b>
-                            <br><i class="fas fa-calendar-week"></i> Available for: 3 days in a week <br>
-                            <i class="far fa-clock"></i> 3 Hours
-                            <i class="far fa-money-bill-alt"></i> 1200 Tk per subject <br><br>
-                            <p><b>Objectives</b> of <mark>Murad Takla</mark>: <br>&nbsp&nbsp&nbsp&nbsp&nbspLorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, id necessitatibus
-                                nemo numquam officia rerum temporibus. Aliquam beatae cumque doloribus error fuga fugiat
-                                hic impedit, inventore maxime nesciunt quasi quod?</p>
+                            <br>{{TutorProfiles.age|safe}} years old, {{TutorProfiles.gender|safe}} <br> Nid No.
+                            {{TutorProfiles.nid_No|safe}} <br>Contact: {{TutorProfiles.phone_number|safe}}<br><br> <i
+                                    class="fas fa-book"></i> Subjects: <b>{{TutorProfiles.subjects_you_teach|safe}}</b>
+                            <br><i class="fas fa-calendar-week"></i> Available for: {{TutorProfiles.week|safe}} days in a week <br>
+                            <i class="far fa-clock"></i> {{TutorProfiles.tution_hour|safe}} Hours
+                            <i class="far fa-money-bill-alt"></i> {{TutorProfiles.fees_per_subject|safe}} Tk per subject <br><br>
+                            <p><b>Objectives</b> of
+                                <mark>{{TutorProfiles.Your_Full_Name|safe}}</mark>
+                                : <br>&nbsp&nbsp&nbsp&nbsp&nbsp{{TutorProfiles.description|safe}}<hr>
+                            </p>
                         </h6>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>{% endfor %}
     </div>
 </div>
-{% for TutorProfiles in tutors %}
-
-<p>{{TutorProfiles.name|safe}}
-    {{TutorProfiles.age|safe}}
-    {{TutorProfiles.nid|safe}}
-    <b>{{TutorProfiles.phone_number|safe}}</b>
-    {{TutorProfiles.subject_you_teach|safe}}
-</p>
-{% if TutorProfiles.image %}
-<img src="{{TutorProfiles.image.url}}" alt="nothing to show" width="200px">
-{% endif %}
-<!-- tempalate tag here -->
-{% endfor %}
 {% endblock content %}
