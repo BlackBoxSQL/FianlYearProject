@@ -48,8 +48,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                         <li><a class="dropdown-item"
-                               href="{% if user.is_tutor %}{% url 'tutor:tutor_profile' %}{% else %}{% url 'guardian:guardian_profile' %}{% endif %}">Profile
-                            Settings</a>
+                               href="{% if user.is_tutor %}{% url 'tutor:tutor_profile' %}{% else %}{% url 'guardian:guardian_profile' %}{% endif %}">Create Post</a>
                         </li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                     </ul>

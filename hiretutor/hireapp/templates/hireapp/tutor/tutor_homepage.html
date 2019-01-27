@@ -3,11 +3,36 @@
 {% block title %}
 {% endblock title %}
 {% block content %}
-<h1> homepage</h1>
+<h1>Tutor homepage</h1>
+<div class="row">
+    <div class="col-sm-4"><p>this in col-sm-4</p></div>
+    <div class="col-sm-8">{% for GuardianProfiles in guardians %}
+        <div class="card card-inverse" style="background-color: #F8F9FA; border-color: #E0A800;">
+            <div class="card-block">
+                <div class="row">
+                     <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-11">
+                        <h5 class="card-title text-muted">
+                            Need a tutor for class {{GuardianProfiles.s_class|safe}} student
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>{% endfor %}
+    </div>
+</div>
+
+
+
+
+
 {% for GuardianProfiles in guardians %}
 
 
-<p>{{GuardianProfiles.gender|safe}}
+<p>{{GuardianProfiles.Guardians_name|safe}}
 {{GuardianProfiles.occupation|safe}}</p>
 {{GuardianProfiles.school|safe}}
 <!-- tempalate tag here -->
