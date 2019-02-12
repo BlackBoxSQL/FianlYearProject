@@ -57,6 +57,5 @@ class GuardianProfiles(models.Model):
     week_days = models.CharField("How many days in a week?", max_length=1)
     number_of_students = models.CharField("Number of students", max_length=2)
 
-
     def __str__(self):
         return 'User Name: {}, Guardian Name: {}'.format(self.user, self.Guardians_name)
