@@ -54,6 +54,8 @@ class GuardianProfiles(models.Model):
     need_tutor_from = models.DateField()
     description = models.TextField(max_length=250)
     address = models.TextField(max_length=150)
+    week_days = models.CharField("How many days in a week?", max_length=1)
+
 
     def __str__(self):
         return 'User Name: {}, Guardian Name: {}'.format(self.user, self.Guardians_name)
