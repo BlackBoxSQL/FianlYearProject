@@ -55,6 +55,7 @@ class GuardianProfiles(models.Model):
     description = models.TextField(max_length=250)
     address = models.TextField(max_length=150)
     week_days = models.CharField("How many days in a week?", max_length=1)
+    number_of_students = models.CharField("Number of students", max_length=2)
 
 
     def __str__(self):
