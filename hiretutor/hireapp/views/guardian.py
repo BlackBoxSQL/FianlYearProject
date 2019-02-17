@@ -1,11 +1,10 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from ..decorators import guardian_required
 from ..models import User, GuardianProfiles, TutorProfiles
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView,ListView
 
 from ..forms import GuardianSignUpForm, CreateGuardianProfile
 
