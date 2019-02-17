@@ -29,7 +29,6 @@ class GuardianHomepage(ListView):
     context_object_name = 'tutors'
     template_name = 'hireapp/guardian/guardian_homepage.html'
     model = TutorProfiles
-    paginate_by = 10
 
 
 @method_decorator([login_required, guardian_required], name='dispatch')
