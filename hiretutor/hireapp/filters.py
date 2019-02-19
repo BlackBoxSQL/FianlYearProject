@@ -4,7 +4,6 @@ from .models import TutorProfiles
 
 
 class TutorFilter(django_filters.FilterSet):
-
     class Meta:
         model = TutorProfiles
         fields = ('tution_you_give_to_class',
