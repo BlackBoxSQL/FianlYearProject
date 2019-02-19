@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'hireapp',
     'crispy_forms',
     'bootstrap4',
+    'django-filters',
 ]
 
 MIDDLEWARE = [

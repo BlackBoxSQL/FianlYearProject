@@ -2,6 +2,8 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
+
+from ..filters import TutorFilter
 from ..decorators import guardian_required
 from ..models import User, GuardianProfiles, TutorProfiles
 from django.views.generic import CreateView,ListView
@@ -41,3 +43,12 @@ class GuardianProfile(CreateView):
         instance.user = self.request.user
         instance.save()
         return redirect('guardian:guardian_homepage')
+
+class TutorListView(ListView):
+    model = TutorProfiles
+    template_name = 'hireapp/guardian/search_tutor.html'
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = TutorFilter(self.request.GET, queryset=self.get_queryset())
+        return context
