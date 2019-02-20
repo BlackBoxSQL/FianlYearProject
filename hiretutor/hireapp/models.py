@@ -19,7 +19,7 @@ class TutorProfiles(models.Model):
     age = models.CharField(max_length=3)
     Date_of_Birth = models.DateField()
     image = models.ImageField(upload_to='', blank=True, null=True)
-    address = models.TextField(max_length=150)
+    address = models.CharField(max_length=150)
     nid_No = models.CharField(max_length=18)
     tution_you_give_to_class = models.CharField(max_length=2)
     subjects_you_teach = models.CharField(max_length=100)
