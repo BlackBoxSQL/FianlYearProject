@@ -1,7 +1,21 @@
+<!--{% extends 'base.html' %}-->
+<!--{% load crispy_forms_tags %}-->
+<!--{% load static %}-->
+<!--{% block title %}-->
+<!--{% endblock title %}-->
+<!--{% block content %}-->
+    <!--{{ filter.form|crispy }}-->
+<!--{% endblock content %}-->
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}
-{% endblock title %}
-{% block content %}
 
-{% endblock content %}
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for tutors in filter.qs %}
+    <li>{{ tutors.Your_Full_Name }} - {{ tutors.nid_No }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

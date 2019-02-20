@@ -21,7 +21,7 @@ urlpatterns = [
                                         name='guardian_homepage'),
                                    path('guardianprofile/', guardian.GuardianProfile.as_view(),
                                         name='guardian_profile'),
-                                   path('guardiansearch/', guardian.search_tutor,
+                                   path('searchtutor/', guardian.search_tutor,
                                         name='searchtutor'),
                                ], 'hireapp'), namespace='guardian')),
     path('tutor/', include(([
