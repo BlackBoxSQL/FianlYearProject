@@ -2,6 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
+
 from ..filters import TutorFilter
 from ..decorators import guardian_required
 from ..models import User, GuardianProfiles, TutorProfiles
@@ -26,6 +27,13 @@ class GuardianSignUpView(CreateView):
 
 
 @method_decorator([login_required, guardian_required], name='dispatch')
+class GuardianHomepage(ListView):
+    context_object_name = 'tutors'
+    template_name = 'hireapp/guardian/guardian_homepage.html'
+    model = TutorProfiles
+
+
+@method_decorator([login_required, guardian_required], name='dispatch')
 class GuardianProfile(CreateView):
     model = GuardianProfiles
     form_class = CreateGuardianProfile
@@ -37,9 +45,6 @@ class GuardianProfile(CreateView):
         return redirect('guardian:guardian_homepage')
 
 
-# @method_decorator([login_required, guardian_required], name='dispatch')
-@login_required()
-@guardian_required()
-def GuardianHomepage(request):
+def search_tutor(request):
     filter = TutorFilter(request.GET, queryset=TutorProfiles.objects.all())
     return render(request, 'hireapp/guardian/search_tutor.html', {'filter': filter})

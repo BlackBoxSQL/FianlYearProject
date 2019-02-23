@@ -1,32 +1,14 @@
 import django_filters
 
-from .models import TutorProfiles, GuardianProfiles
+from .models import TutorProfiles
 
 
 class TutorFilter(django_filters.FilterSet):
-    tution_you_give_to_class = django_filters.CharFilter(lookup_expr='exact', label='Search by class')
-    fees_per_subject = django_filters.CharFilter(lookup_expr='exact', label='Search by tuition fees')
-    address = django_filters.CharFilter(lookup_expr='icontains', label='Search by address')
-    subjects_you_teach = django_filters.CharFilter(lookup_expr='icontains', label='Search by subject')
+    address = django_filters.CharFilter(field_name='search_by', lookup_expr='icontains')
+
     class Meta:
         model = TutorProfiles
         fields = ['tution_you_give_to_class',
                   'fees_per_subject',
                   'subjects_you_teach',
-                  'address',
-        ]
-
-class GuardianFilter(django_filters.FilterSet):
-    subject = django_filters.CharFilter(lookup_expr='icontains', label='Search by subject')
-    s_class = django_filters.CharFilter(lookup_expr='exact', label="Search by student's class")
-    payment = django_filters.CharFilter(lookup_expr='exact', label='Search by payment')
-    gender = django_filters.CharFilter(lookup_expr='exact', label='Search by gender')
-
-    class Meta:
-        model = GuardianProfiles
-        fields = [
-            'subject',
-            's_class',
-            'payment',
-            'gender',
-        ]
+                  ]

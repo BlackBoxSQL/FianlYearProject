@@ -4,41 +4,13 @@
 {% block title %}this is a title
 {% endblock title %}
 {% block content %}
-<div class="row">
-    <div class="col-sm-4"> <form method="get">
+  <form method="get">
     {{ filter.form|crispy }}
     <button type="submit">Search</button>
-  </form></div>
-    <div class="col-sm-8">{% for tutors in filter.qs %}
-        <div class="card card-inverse" style="background-color: #F8F9FA; border-color: #E0A800;">
-            <div class="card-block">
-                <div class="row">
-                    <div class="col-sm-4">
-                        {% if tutors.image %}
-                        <img src="{{tutors.image.url}}"
-                             alt="nothing to show" class="img-thumbnail rounded float-left">
-                        {% endif %}
-                    </div>
-                    <div class="col-sm-8"><br>
-                        <h5 class="card-title text-muted"><i class="fas fa-chalkboard-teacher"></i>
-                            {{tutors.Your_Full_Name|safe}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{tutors.address|safe}}
-                            <ion-icon name="pin"></ion-icon>
-                            <br>{{tutors.age|safe}} years old, {{tutors.gender|safe}} <br> Nid No.
-                            {{tutors.nid_No|safe}} <br>Contact: {{tutors.phone_number|safe}}<br><br> <i
-                                    class="fas fa-book"></i> Subjects: <b>{{tutors.subjects_you_teach|safe}}</b>
-                            <br><i class="fas fa-calendar-week"></i> Available for: {{tutors.week|safe}} days in a week <br>
-                            <i class="far fa-clock"></i> {{tutors.tution_hour|safe}} Hours
-                            <i class="far fa-money-bill-alt"></i> {{tutors.fees_per_subject|safe}} Tk per subject <br><br>
-                            <p><b>Objectives</b> of
-                                <mark>{{tutors.Your_Full_Name|safe}}</mark>
-                                : <br>&nbsp&nbsp&nbsp&nbsp&nbsp{{tutors.description|safe}}<hr>
-                            </p>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>{% endfor %}
-    </div>
-</div>
+  </form>
+  <ul>
+  {% for tutors in filter.qs %}
+    <li>{{ tutors.Your_Full_Name }} - {{ tutors.nid_No }}</li>
+  {% endfor %}
+  </ul>
 {% endblock content %}
