@@ -29,7 +29,7 @@ class TutorSignUpView(CreateView):
 @tutor_required()
 def TutorHomepage(request):
     filters = GuardianFilter(request.GET, queryset=GuardianProfiles.objects.all())
-    return render(request, 'hireapp/tutor/search_guardian.html', {'filters': filters})
+    return render(request, 'hireapp/tutor/tutor_homepage.html', {'filters': filters})
 
 
 @method_decorator([login_required, tutor_required], name='dispatch')
