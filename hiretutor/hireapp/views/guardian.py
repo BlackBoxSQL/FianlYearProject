@@ -2,12 +2,10 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
-
 from ..filters import TutorFilter
 from ..decorators import guardian_required
 from ..models import User, GuardianProfiles, TutorProfiles
 from django.views.generic import CreateView, ListView
-
 from ..forms import GuardianSignUpForm, CreateGuardianProfile
 
 
@@ -26,11 +24,12 @@ class GuardianSignUpView(CreateView):
         return redirect('guardian:guardian_homepage')
 
 
-@method_decorator([login_required, guardian_required], name='dispatch')
-class GuardianHomepage(ListView):
-    context_object_name = 'tutors'
-    template_name = 'hireapp/guardian/guardian_homepage.html'
-    model = TutorProfiles
+# @method_decorator([login_required, guardian_required], name='dispatch')
+@login_required()
+@guardian_required()
+def GuardianHomepage(request):
+    filter = TutorFilter(request.GET, queryset=TutorProfiles.objects.all())
+    return render(request, 'hireapp/guardian/search_tutor.html', {'filter': filter})
 
 
 @method_decorator([login_required, guardian_required], name='dispatch')
@@ -43,8 +42,3 @@ class GuardianProfile(CreateView):
         instance.user = self.request.user
         instance.save()
         return redirect('guardian:guardian_homepage')
-
-
-def search_tutor(request):
-    filter = TutorFilter(request.GET, queryset=TutorProfiles.objects.all())
-    return render(request, 'hireapp/guardian/search_tutor.html', {'filter': filter})

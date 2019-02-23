@@ -10,22 +10,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include, path
-
 from .views import hireapp, tutor, guardian
 
 urlpatterns = [
     path('', hireapp.index, name='home'),
 
     path('guardian/', include(([
-                                   path('guardianhomepage/', guardian.GuardianHomepage.as_view(),
+                                   path('guardianhomepage/', guardian.GuardianHomepage,
                                         name='guardian_homepage'),
                                    path('guardianprofile/', guardian.GuardianProfile.as_view(),
                                         name='guardian_profile'),
-                                   path('searchtutor/', guardian.search_tutor,
-                                        name='searchtutor'),
+
                                ], 'hireapp'), namespace='guardian')),
     path('tutor/', include(([
-                                path('tutorhomepage/', tutor.TutorHomepage.as_view(),
+                                path('tutorhomepage/', tutor.TutorHomepage,
                                      name='tutor_homepage'),
                                 path('tutorprofile/', tutor.TutorProfile.as_view(),
                                      name='tutor_profile'),

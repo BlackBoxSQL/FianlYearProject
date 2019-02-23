@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}this is a title
+{% endblock title %}
+{% block content %}
+  <form method="get">
+    {{ filters.form|crispy }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for guardians in filters.qs %}
+    <li>{{ guardians.Guardians_name }} - {{ guardians.occupation }}</li>
+  {% endfor %}
+  </ul>
+{% endblock content %}
