@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+<h1>Tutor homepage</h1>
+<div class="row">
+    <div class="col-sm-4"><form method="get">
+    {{ filter.form|crispy }}
+    <button type="submit">Search</button>
+  </form></div>
+    <div class="col-sm-8">{% for guardians in filter.qs %}
+        <div class="card card-inverse" style="background-color: #F8F9FA; border-color: #E0A800;">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-sm-1">
+
+                    </div>
+                    <div class="col-sm-11">
+                        <h5 class="card-title text-muted">
+                            Need a tutor for class {{guardians.s_class|safe}} student. <br>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                             Subject: <b>{{guardians.subject|safe}}</b> ({{guardians.week_days|safe}} days in a week for {{guardians.tution_hour|safe}} hours from {{guardians.need_tutor_from|safe}}.)
+                            <br>
+                            Number of students: {{guardians.number_of_students|safe}}. Payment: <b>{{guardians.payment|safe}} </b> Tk. Location: <b>{{guardians.address|safe}}.</b>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>{% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
